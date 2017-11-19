@@ -1,0 +1,49 @@
+0.
+An invented long word said to mean a lung disease caused by inhaling very fine ash and sand dust.
+
+
+1.
+Return resource usage statistics for the calling process, which is the sum of resources used by all threads in the process.
+
+
+2.
+16
+
+
+3.
+We need to, since getrusage takes a pointer to a struct.
+
+
+4.
+First it initializes integers 'index', 'misspellings' and 'words' to 0
+and it reserves a character pointer (string) to maximum length + 1
+
+The for loop initializes and integer c, that gets the first character in file pointer *fp.
+it continues till this character is EOF (end of file).
+every iteration it gets the next character of the file pointer.
+
+Then in the for loop, each iteration the following happens.
+
+If the character is alphabetic or if it's an apostrophe and not the first character of the word.
+then add the character to the word string at index and increase index by one.
+
+Check if the word is not too long, if it us, forward the file pointer to the next word (it's not END OF FILE and not part of the alphabet)
+
+Else if it is a digit, also forward the file pointer to the next word.
+
+Else if the index is greater than 0, the word has ended. Let's process it.
+Add an '\0' (END OF STRING) the the current string.
+Put the current resource state in and rusage struct before.
+Check if it's misspelled. (returns true or false)
+Put the current resource state in an rusage struct after.
+Calculate the time it took with before and after.
+If it was misspelled, increase the misspelled counter.
+
+5.
+Which fgetc we have finer control over what to count as a word and what not.
+For example, in a prose text, lines might end in commas and dots. These would be seen as part
+of the string with fscanf. With fgetc we can catch these out.
+
+6.
+These are pointers, either to the dictionary or the word being process. Both which do not need
+to change, they might actually cause problems if changed.
